@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.bar:hover .amount {
+.bar:hover,
+.bar:active .amount {
     display: block;
 }

@@ -10,7 +10,8 @@ export function Chart() {
         }).then((res) => {
             res.json().then((data) => {
                 setSpendings(data)
-                const { amount } = data.reduce((prev, now) => now.amount > prev.amount ? now : prev)
+                const { amount } = (data as SpendingByDay[])
+                    .reduce((prev, now) => now.amount > prev.amount ? now : prev)
                 setMaxSpending(amount)
                 console.log(amount)
             })
@@ -18,17 +19,17 @@ export function Chart() {
     }, [])
 
     return (
-        <div className="grid grid-flow-col gap-4 h-44 grid-cols-7 text-center">
+        <div className="grid grid-flow-col gap-4 h-44 grid-cols-7 text-center mt-16">
             {spendings.map((spending) => {
                 return (
-                    <div key={spending.day} className="flex flex-col justify-end">
-                        <div className="bar | bg-my-red relative rounded-md hover:bg-my-cyan cursor-pointer"
+                    <div key={spending.day} className="flex flex-col justify-end gap-2">
+                        <div className={`bar | ${spending.amount === maxSpending ? "bg-my-cyan" : "bg-my-red"} relative rounded-md hover:opacity-80 cursor-pointer`}
                             style={{ height: `${spending.amount / maxSpending * 100}%` }}>
-                            <div className="amount | hidden absolute p-2 bg-dark-brown rounded-md text-white top-[-3rem] left-[-0.5rem] right-[-0.5rem]">
+                            <div className="amount | text-xs md:text-base hidden absolute p-2 bg-dark-brown rounded-md text-white top-[-3rem] left-[-0.5rem] right-[-0.5rem]">
                                 {spending.amount}
                             </div>
                         </div>
-                        <div>
+                        <div className="text-sm">
                             {spending.day}
                         </div>
                     </div>

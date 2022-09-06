@@ -1,3 +1,5 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -13,7 +15,10 @@ module.exports = {
         "dark-brown": "#382314",
         "my-cyan": "#76B5BC",
         "my-red": "#EC755D",
-      }
+      },
+      fontFamily: {
+        'sans': ['DM Sans', ...defaultTheme.fontFamily.sans],
+      },
     },
   },
   plugins: [],
