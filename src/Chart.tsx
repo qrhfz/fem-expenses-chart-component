@@ -23,12 +23,23 @@ export function Chart() {
             {spendings.map((spending) => {
                 return (
                     <div key={spending.day} className="flex flex-col justify-end gap-2">
-                        <div className={`bar | ${spending.amount === maxSpending ? "bg-my-cyan" : "bg-my-red"} relative rounded-md hover:opacity-80 cursor-pointer`}
-                            style={{ height: `${spending.amount / maxSpending * 100}%` }}>
-                            <div className="amount | text-xs md:text-base hidden absolute p-2 bg-dark-brown rounded-md text-white top-[-3rem] left-[-0.5rem] right-[-0.5rem]">
-                                {spending.amount}
+                        <div className="flex flex-col justify-end h-full">
+                            <div className={`bar | 
+                                relative rounded-md hover:opacity-60 cursor-pointer
+                                ${spending.amount === maxSpending ? "bg-my-cyan" : "bg-my-red"}`}
+                                style={{
+                                    flexBasis: `${spending.amount / maxSpending * 100}%`
+                                }}>
+                                <div className="amount 
+                                | text-xs md:text-base hidden absolute p-2 
+                                bg-dark-brown rounded-md text-white 
+                                top-[-3rem] left-[-0.5rem] right-[-0.5rem]">
+                                    ${spending.amount}
+                                </div>
                             </div>
                         </div>
+
+
                         <div className="text-sm">
                             {spending.day}
                         </div>
