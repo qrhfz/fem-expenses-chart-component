@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import logo from "./assets/images/logo.svg"
 import './App.css'
 import { Chart } from './Chart'
 
@@ -16,7 +16,7 @@ function App() {
             </h2>
             <div className='font-bold text-3xl'>$921.48</div>
           </div>
-          <img className="h-12" src="src/assets/images/logo.svg" alt="logo" />
+          <img className="h-12" src={logo} alt="logo" />
         </div>
         <div className='bg-card-white rounded-xl px-5 py-6 md:px-10 md:py-8 text-med-brown'>
           <h1 className="font-bold text-2xl md:text-3xl mb-8 text-dark-brown">
